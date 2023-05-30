@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_02/presentation/screen_navigationbar.dart';
+import 'presentation/screen_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         colorSchemeSeed: Colors.blue,
       ),
-      home: const ScreenNavigationBar(),
+      routes: {
+        '/': ((context) => const ScreenHome()),
+      },
     );
   }
 }
