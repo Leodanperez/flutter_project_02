@@ -63,12 +63,14 @@ class _ScreenSplashState extends State<ScreenSplash> {
                   ),
                   MainButton(
                     onTap: () {
-                      Navigator.push(
+                      /* Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (builder) => const LoginPage(),
                         ),
-                      );
+                      ); */
+                      //Launch AlertDialog
+                      _showLoadingDialog('Mensaje Informativo');
                     },
                     btnColor: blueButton,
                     text: 'Get Started',
@@ -79,6 +81,44 @@ class _ScreenSplashState extends State<ScreenSplash> {
           )
         ],
       ),
+    );
+  }
+
+  Future<void> _showLoadingDialog(String title) async {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: const SingleChildScrollView(
+            child: ListBody(
+              children: [
+                Text('¿Estas seguro de eliminar?'),
+                Text('Si eliminas ya no podras recuperar.'),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'Cancel'),
+              child: Text('Cancelar'),
+              style: ButtonStyle(
+                foregroundColor: MaterialStateColor.resolveWith(
+                  (states) => const Color(0xFFF44336),
+                ),
+                overlayColor: MaterialStateColor.resolveWith(
+                  (states) => const Color(0xFFEF9A9A),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('Aceptar'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
