@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_02/presentation/screen_login.dart';
+import 'package:flutter_app_02/presentation/screen_register.dart';
 import 'package:flutter_app_02/presentation/screen_splash.dart';
 import 'presentation/screen_booking.dart';
 
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorSchemeSeed: Colors.blue,
       ),
       routes: {
-        '/': ((context) => const ScreenSplash()),
+        '/': ((context) => const ScreenLogin()),
         '/booking': ((context) => const ScreenBooking())
       },
     );
